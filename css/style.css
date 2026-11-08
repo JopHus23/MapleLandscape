@@ -46,6 +46,9 @@
     --border: rgba(255,255,255,0.08);
     --card-bg: rgba(255,255,255,0.04);
   }
+  html:not([data-theme-manual]) nav {
+    background: rgba(10,10,10,0.8);
+  }
 }
 
 [data-theme="dark"] {
