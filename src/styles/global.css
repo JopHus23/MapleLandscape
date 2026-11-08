@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #FAFAF8;
+  --color-void: #0A0A0A;
+  --color-abyss: #1A1A1A;
+  --color-maple: #D87C5F;
+  --color-maple-dim: rgba(216, 124, 95, 0.12);
+  --color-grid-light: rgba(0, 0, 0, 0.04);
+  --color-grid-dark: rgba(255, 255, 255, 0.06);
+  --font-serif: "Noto Serif SC", "Georgia", serif;
+  --font-sans: "Noto Sans SC", "Helvetica Neue", sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+}
+
+:root {
+  --bg: var(--color-paper);
+  --fg: var(--color-void);
+  --fg-secondary: rgba(10, 10, 10, 0.55);
+  --fg-muted: rgba(10, 10, 10, 0.3);
+  --accent: var(--color-maple);
+  --accent-dim: var(--color-maple-dim);
+  --grid-line: var(--color-grid-light);
+  --border: rgba(0, 0, 0, 0.08);
+  --card-bg: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme="dark"] {
+  --bg: var(--color-void);
+  --fg: var(--color-paper);
+  --fg-secondary: rgba(250, 250, 248, 0.55);
+  --fg-muted: rgba(250, 250, 248, 0.3);
+  --accent: var(--color-maple);
+  --accent-dim: rgba(216, 124, 95, 0.15);
+  --grid-line: var(--color-grid-dark);
+  --border: rgba(255, 255, 255, 0.08);
+  --card-bg: rgba(255, 255, 255, 0.04);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--fg-muted);
+  border-radius: 2px;
+}
+
+.font-serif { font-family: var(--font-serif); }
+.font-mono { font-family: var(--font-mono); }
+
+/* Grid background */
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Reading progress bar */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: var(--accent);
+  z-index: 100;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(4px);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

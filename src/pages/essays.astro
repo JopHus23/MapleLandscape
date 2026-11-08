@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="随笔 — Nilset">
+  <section class="max-w-5xl mx-auto px-6 py-16">
+    <h1 class="font-serif text-4xl font-bold mb-2" style="color: var(--fg);">随笔</h1>
+    <p class="font-mono text-xs tracking-widest mb-12" style="color: var(--fg-muted);">ESSAYS / WRITINGS</p>
+
+    <div class="space-y-0">
+      {[1, 2, 3, 4, 5].map((i) => (
+        <a
+          href="#"
+          class="essay-item group flex items-baseline gap-6 py-6 border-b transition-all duration-300 hover:pl-2"
+          style="border-color: var(--border);"
+        >
+          <span class="font-mono text-xs shrink-0" style="color: var(--accent);">{String(i).padStart(2, '0')} ∅</span>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-serif text-lg font-semibold group-hover:translate-x-1 transition-transform duration-300" style="color: var(--fg);">
+              随笔标题 {i} — 关于空集与存在
+            </h3>
+            <p class="text-sm mt-1 line-clamp-1" style="color: var(--fg-secondary);">
+              这是一段摘要文字，描述这篇随笔的核心内容和思考方向，让读者产生阅读兴趣。
+            </p>
+          </div>
+          <span class="font-mono text-xs shrink-0" style="color: var(--fg-muted);">2025-01-{String(i * 5).padStart(2, '0')}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .essay-item:hover h3 {
+    color: var(--accent) !important;
+  }
+</style>

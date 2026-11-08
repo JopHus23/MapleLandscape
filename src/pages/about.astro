@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MagneticButton from '../components/MagneticButton';
+---
+
+<Layout title="关于 — Nilset">
+  <section class="max-w-5xl mx-auto px-6 py-16">
+    <h1 class="font-serif text-4xl font-bold mb-2" style="color: var(--fg);">关于</h1>
+    <p class="font-mono text-xs tracking-widest mb-12" style="color: var(--fg-muted);">ABOUT / MIPHER</p>
+
+    <div class="max-w-2xl space-y-6">
+      <p class="reveal text-base leading-relaxed" style="color: var(--fg-secondary);">
+        你好，我是 <strong style="color: var(--fg);">Mapher（云枫）</strong>。
+      </p>
+      <p class="reveal text-base leading-relaxed" style="color: var(--fg-secondary);">
+        <strong style="color: var(--accent);">枫糖空集</strong>是我的个人博客——一个关于图片、随笔和思考的空间。
+        枫糖代表温暖与流动，空集代表虚无与无限。在这里，两者共存。
+      </p>
+      <p class="reveal text-base leading-relaxed" style="color: var(--fg-secondary);">
+        名字里的 <span class="font-mono" style="color: var(--accent);">∅</span> 是空集符号——它看起来像一个黑洞，
+        吞噬一切，但也定义了万物的边界。
+      </p>
+      <div class="reveal pt-4">
+        <MagneticButton href="/">← 回到首页</MagneticButton>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
+</Layout>

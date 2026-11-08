@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="图片 — Nilset">
+  <section class="max-w-5xl mx-auto px-6 py-16">
+    <h1 class="font-serif text-4xl font-bold mb-2" style="color: var(--fg);">图片墙</h1>
+    <p class="font-mono text-xs tracking-widest mb-12" style="color: var(--fg-muted);">GALLERY / VISUALS</p>
+
+    <div class="columns-2 md:columns-3 gap-4">
+      {[...Array(9)].map((_, i) => (
+        <div
+          class="gallery-item reveal mb-4 break-inside-avoid rounded-lg border overflow-hidden relative group cursor-pointer"
+          style={`border-color: var(--border); background: var(--card-bg); aspect-ratio: ${i % 3 === 0 ? '3/4' : i % 3 === 1 ? '1/1' : '4/3'};`}
+        >
+          <div class="absolute inset-0 flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.03]">
+            <span class="font-mono text-3xl" style="color: var(--fg-muted);">∅</span>
+          </div>
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="corner-marker absolute top-3 left-3 w-4 h-4 border-t border-l" style="border-color: var(--accent);"></div>
+            <div class="corner-marker absolute top-3 right-3 w-4 h-4 border-t border-r" style="border-color: var(--accent);"></div>
+            <div class="corner-marker absolute bottom-3 left-3 w-4 h-4 border-b border-l" style="border-color: var(--accent);"></div>
+            <div class="corner-marker absolute bottom-3 right-3 w-4 h-4 border-b border-r" style="border-color: var(--accent);"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .corner-marker {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .gallery-item:hover .corner-marker:nth-child(1) { transform: translate(4px, 4px); }
+  .gallery-item:hover .corner-marker:nth-child(2) { transform: translate(-4px, 4px); }
+  .gallery-item:hover .corner-marker:nth-child(3) { transform: translate(4px, -4px); }
+  .gallery-item:hover .corner-marker:nth-child(4) { transform: translate(-4px, -4px); }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>
