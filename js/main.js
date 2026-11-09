@@ -231,6 +231,39 @@
 
   // Magnetic buttons
   document.querySelectorAll('.magnetic').forEach(btn => {
+    const heavy = btn.classList.contains('heavy-magnetic');
+    let frameId = null;
+    let currentX = 0;
+    let currentY = 0;
+    let targetX = 0;
+    let targetY = 0;
+    let currentRadius = heavy ? 24 : 8;
+    let targetRadius = heavy ? 24 : 8;
+
+    const animate = () => {
+      const ease = heavy ? 0.18 : 0.3;
+      currentX += (targetX - currentX) * ease;
+      currentY += (targetY - currentY) * ease;
+      currentRadius += (targetRadius - currentRadius) * ease;
+      btn.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+      btn.style.borderRadius = currentRadius + 'px';
+
+      if (
+        Math.abs(targetX - currentX) < 0.02 &&
+        Math.abs(targetY - currentY) < 0.02 &&
+        Math.abs(targetRadius - currentRadius) < 0.02
+      ) {
+        currentX = targetX;
+        currentY = targetY;
+        currentRadius = targetRadius;
+        btn.style.transform = `translate3d(${targetX}px, ${targetY}px, 0)`;
+        btn.style.borderRadius = targetRadius + 'px';
+        frameId = null;
+        return;
+      }
+      frameId = requestAnimationFrame(animate);
+    };
+
     btn.addEventListener('mousemove', (e) => {
       const rect = btn.getBoundingClientRect();
       const cx = rect.left + rect.width / 2;
@@ -241,15 +274,28 @@
       const maxDist = Math.max(rect.width, rect.height);
       if (dist < maxDist * 2) {
         const strength = Math.max(0, 1 - dist / (maxDist * 2));
-        const pull = strength * strength * 12;
-        const angle = Math.atan2(dy, dx);
-        btn.style.transform = `translate(${Math.cos(angle) * pull}px, ${Math.sin(angle) * pull}px)`;
-        btn.style.borderRadius = (8 + strength * 40) + 'px';
+        if (heavy) {
+          const rangeX = Math.max(rect.width / 2, 1);
+          const rangeY = Math.max(rect.height / 2, 1);
+          targetX = Math.max(-1, Math.min(1, dx / rangeX)) * 7;
+          targetY = Math.max(-1, Math.min(1, dy / rangeY)) * 5;
+          targetRadius = 24 + Math.min(Math.abs(targetX) + Math.abs(targetY), 12) * 0.5;
+        } else {
+          const pull = strength * strength * 12;
+          const angle = Math.atan2(dy, dx);
+          targetX = Math.cos(angle) * pull;
+          targetY = Math.sin(angle) * pull;
+          targetRadius = 8 + strength * 40;
+        }
+        if (!frameId) frameId = requestAnimationFrame(animate);
       }
     });
+
     btn.addEventListener('mouseleave', () => {
-      btn.style.transform = 'translate(0,0)';
-      btn.style.borderRadius = '8px';
+      targetX = 0;
+      targetY = 0;
+      targetRadius = btn.classList.contains('heavy-magnetic') ? 24 : 8;
+      if (!frameId) frameId = requestAnimationFrame(animate);
     });
   });
 
@@ -300,7 +346,7 @@
   const isTouch = window.matchMedia('(pointer: coarse)').matches && !window.matchMedia('(any-pointer: fine)').matches;
   if (isTouch) {
     const touchDot = document.createElement('div');
-    touchDot.style.cssText = 'position:fixed;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--accent);pointer-events:none;z-index:300;transform:translate(-50%,-50%);opacity:0;transition:opacity .15s;';
+    touchDot.style.cssText = 'position:fixed;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--accent);pointer-events:none;z-index:300;transform:translate(-50%,-50%);opacity:0;transition:opacity .6s;';
     document.body.appendChild(touchDot);
 
     let touchActive = false;
