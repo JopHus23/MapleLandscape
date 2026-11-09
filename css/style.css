@@ -72,7 +72,7 @@ html {
   transition: background .5s ease, color .5s ease;
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) and (any-pointer: fine) {
   html {
     cursor: none;
   }

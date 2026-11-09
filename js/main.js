@@ -34,7 +34,8 @@
 
   // Custom cursor system
   const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+  const isTouchOnly = window.matchMedia('(pointer: coarse)').matches && !window.matchMedia('(any-pointer: fine)').matches;
+  if (!isReducedMotion && !isTouchOnly) {
   if (!isReducedMotion && !isTouchDevice) {
     const dot = document.createElement('div');
     const ring = document.createElement('div');
