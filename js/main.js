@@ -290,4 +290,26 @@
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeLightbox();
   });
+
+  // Touch cursor: follows finger while pressed
+  const isTouch = window.matchMedia('(pointer: coarse)').matches && !window.matchMedia('(any-pointer: fine)').matches;
+  if (isTouch) {
+    const touchDot = document.createElement('div');
+    touchDot.style.cssText = 'position:fixed;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--accent);pointer-events:none;z-index:300;transform:translate(-50%,-50%);opacity:0;transition:opacity .2s;';
+    document.body.appendChild(touchDot);
+    document.addEventListener('touchstart', (e) => {
+      const t = e.touches[0];
+      touchDot.style.left = t.clientX + 'px';
+      touchDot.style.top = t.clientY + 'px';
+      touchDot.style.opacity = '0.6';
+    }, { passive: true });
+    document.addEventListener('touchmove', (e) => {
+      const t = e.touches[0];
+      touchDot.style.left = t.clientX + 'px';
+      touchDot.style.top = t.clientY + 'px';
+    }, { passive: true });
+    document.addEventListener('touchend', () => {
+      touchDot.style.opacity = '0';
+    }, { passive: true });
+  }
 })();
