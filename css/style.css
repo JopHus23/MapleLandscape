@@ -69,6 +69,8 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 
 html {
+  overflow-x:hidden;
+  overscroll-behavior-x:none;
   scroll-behavior: smooth;
   background: var(--bg);
   color: var(--fg);
@@ -268,6 +270,11 @@ footer svg[viewBox="0 0 24 20"] {
 @media (max-width:640px) {
   .essay-item { flex-direction:column; gap:8px; }
   .essay-item .date { display:none; }
+  footer .inner {
+    gap:14px; flex-wrap:wrap;
+    row-gap:14px;
+  }
+  footer .right { display:none; }
 }
 
 /* Reduced motion */

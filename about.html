@@ -6,10 +6,11 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <title>关于 — Nilset</title>
   <link rel="preload" href="fonts/JetBrainsMapleMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=8">
+  <link rel="stylesheet" href="css/style.css?v=9">
   <style>
     .snap-container {
       height:100vh; overflow-y:auto; scroll-snap-type:y mandatory;
+      overflow-x:hidden;
       scroll-behavior:smooth;
       scroll-padding-top:0;
     }
@@ -97,6 +98,10 @@ display:flex; align-items:center; justify-content:center;
     a[href*="space.bilibili"] > svg[viewBox="0 0 1024 1024"] { display:none; }
     @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
     @media (max-width:640px) { .snap-nav { display:none; } }
+    @media (max-width:640px) {
+      footer .inner { gap:14px; flex-wrap:wrap; }
+      footer .right { display:none; }
+    }
     main { padding-top:0 !important; }
     body { overflow:hidden; }
   </style>
@@ -197,7 +202,7 @@ display:flex; align-items:center; justify-content:center;
     <button class="dot" data-target="2" aria-label="友链"></button>
   </div>
 
-  <script src="js/main.js?v=10"></script>
+  <script src="js/main.js?v=12"></script>
   <script>
     document.querySelector('.theme-btn').addEventListener('click',function(){this.textContent=document.documentElement.getAttribute('data-theme')==='dark'?'☾':'☀';});
     document.querySelector('.theme-btn').textContent=document.documentElement.getAttribute('data-theme')==='dark'?'☾':'☀';
