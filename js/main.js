@@ -36,7 +36,6 @@
   const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isTouchOnly = window.matchMedia('(pointer: coarse)').matches && !window.matchMedia('(any-pointer: fine)').matches;
   if (!isReducedMotion && !isTouchOnly) {
-  if (!isReducedMotion && !isTouchDevice) {
     const dot = document.createElement('div');
     const ring = document.createElement('div');
     const nilset = document.createElement('span');
