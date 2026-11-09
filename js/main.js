@@ -34,7 +34,8 @@
 
   // Custom cursor system
   const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!isReducedMotion) {
+  const isTouchDevice = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+  if (!isReducedMotion && !isTouchDevice) {
     const dot = document.createElement('div');
     const ring = document.createElement('div');
     const nilset = document.createElement('span');
