@@ -300,21 +300,43 @@
   const isTouch = window.matchMedia('(pointer: coarse)').matches && !window.matchMedia('(any-pointer: fine)').matches;
   if (isTouch) {
     const touchDot = document.createElement('div');
-    touchDot.style.cssText = 'position:fixed;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--accent);pointer-events:none;z-index:300;transform:translate(-50%,-50%);opacity:0;transition:opacity .2s;';
+    touchDot.style.cssText = 'position:fixed;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--accent);pointer-events:none;z-index:300;transform:translate(-50%,-50%);opacity:0;transition:opacity .15s;';
     document.body.appendChild(touchDot);
-    document.addEventListener('touchstart', (e) => {
-      const t = e.touches[0];
-      touchDot.style.left = t.clientX + 'px';
-      touchDot.style.top = t.clientY + 'px';
-      touchDot.style.opacity = '0.6';
+
+    let touchActive = false;
+    let tx = 0, ty = 0;
+
+    document.addEventListener('pointerdown', (e) => {
+      if (e.pointerType === 'touch') {
+        touchActive = true;
+        tx = e.clientX;
+        ty = e.clientY;
+        touchDot.style.left = tx + 'px';
+        touchDot.style.top = ty + 'px';
+        touchDot.style.opacity = '0.6';
+      }
     }, { passive: true });
-    document.addEventListener('touchmove', (e) => {
-      const t = e.touches[0];
-      touchDot.style.left = t.clientX + 'px';
-      touchDot.style.top = t.clientY + 'px';
+
+    document.addEventListener('pointermove', (e) => {
+      if (touchActive && e.pointerType === 'touch') {
+        tx = e.clientX;
+        ty = e.clientY;
+      }
     }, { passive: true });
-    document.addEventListener('touchend', () => {
+
+    const hideTouchDot = () => {
+      touchActive = false;
       touchDot.style.opacity = '0';
-    }, { passive: true });
+    };
+    document.addEventListener('pointerup', hideTouchDot, { passive: true });
+    document.addEventListener('pointercancel', hideTouchDot, { passive: true });
+
+    (function touchFollow() {
+      if (touchActive) {
+        touchDot.style.left = tx + 'px';
+        touchDot.style.top = ty + 'px';
+      }
+      requestAnimationFrame(touchFollow);
+    })();
   }
 })();

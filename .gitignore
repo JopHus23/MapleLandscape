@@ -15,6 +15,7 @@ test-import.js
 test-out.js
 *.log
 .env
+fonts/*.ttf
 .DS_Store
 Thumbs.db
 essays/*.md
