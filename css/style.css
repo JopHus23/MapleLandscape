@@ -240,6 +240,12 @@ footer .left { display:flex; align-items:center; gap:8px; }
 footer .left .sym { font-size:14px; color:var(--accent); }
 footer .left .txt { font-size:12px; color:var(--fg-muted); }
 footer .right { font-size:12px; color:var(--fg-muted); }
+footer .right svg,
+footer svg[viewBox="0 0 24 20"] {
+  vertical-align:middle;
+  position:relative;
+  top:-3px;
+}
 
 /* Section headings */
 .section-head {
