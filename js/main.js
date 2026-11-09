@@ -276,8 +276,13 @@
 
   document.querySelectorAll('.gallery-grid .item img, .gallery-grid .item').forEach(el => {
     el.addEventListener('click', (e) => {
-      const img = el.closest('.item')?.querySelector('img') || el;
-      if (img && img.src) {
+      const item = el.closest('.item');
+      const fullSrc = item?.getAttribute('data-full');
+      const img = item?.querySelector('img') || el;
+      if (fullSrc) {
+        e.stopPropagation();
+        openLightbox(fullSrc);
+      } else if (img && img.src) {
         e.stopPropagation();
         openLightbox(img.src);
       }
