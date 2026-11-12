@@ -6,7 +6,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <title>随笔 — Nilset</title>
   
-<link rel="preload" href="fonts/JetBrainsMapleMono-Regular.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="css/style.css?v=12">
+<link rel="preload" href="fonts/JetBrainsMapleMono-Regular.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="css/style.css?v=13">
 </head>
 <body>
   <div class="grid-bg" aria-hidden="true"></div>
@@ -30,11 +30,6 @@
       <h1 class="font-serif" style="font-size:36px; font-weight:700; color:var(--fg);">随笔</h1>
       <p class="font-mono" style="font-size:12px; letter-spacing:.1em; margin-bottom:48px; color:var(--fg-muted);">ESSAYS / WRITINGS</p>
 
-      <div class="archive-switch">
-        <button type="button" data-view="collections" class="active">按文集</button>
-        <button type="button" data-view="timeline">全部时间</button>
-      </div>
-
       <p class="section-label">最近更新</p>
       <div class="essay-list" style="margin-bottom:64px; border-bottom:1px solid var(--border);">
         <!-- ESSAY_RECENT -->
@@ -44,6 +39,11 @@
         <a href="essays/%E6%9E%AB%E8%AF%AD%C2%B7%E8%8C%9C%E7%A9%BA/Past-t.html" class="essay-item reveal" data-collection="枫语·茜空"><span class="num">04 ∅</span><div class="content"><span class="item-tag">枫语·茜空</span><h3>蝶恋花·归何处</h3><p>云落沉山山艳艳，</p></div><span class="date">2024-12-20</span></a>
         <a href="essays/%E6%9E%AB%E8%AF%AD%C2%B7%E6%9D%B1%E9%9B%B2/O-IV.html" class="essay-item reveal" data-collection="枫语·東雲"><span class="num">05 ∅</span><div class="content"><span class="item-tag">枫语·東雲</span><h3>之外·其四</h3><p>给时间时间</p></div><span class="date">2023-09-10</span></a>
       <!-- /ESSAY_RECENT -->
+      </div>
+
+      <div class="archive-switch">
+        <button type="button" data-view="collections" class="active">按文集</button>
+        <button type="button" data-view="timeline">全部时间</button>
       </div>
 
       <div id="essay-collections">
@@ -116,6 +116,8 @@
 
   <script src="js/main.js?v=12"></script>
   <script>document.querySelector('.theme-btn').addEventListener('click',function(){this.textContent=document.documentElement.getAttribute('data-theme')==='dark'?'☾':'☀';});document.querySelector('.theme-btn').textContent=document.documentElement.getAttribute('data-theme')==='dark'?'☾':'☀';</script>
+
+
 
 
 
