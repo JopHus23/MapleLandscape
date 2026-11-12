@@ -11,13 +11,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Clean stale generated files
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: root
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            find /var/www/nilset/essays -type f -name "*.html" -delete
+            find /var/www/nilset/images -type f \( -name "*.html" -o -name "*.webp" \) -delete
+
       - name: Deploy to server
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: root
           key: ${{ secrets.SERVER_SSH_KEY }}
-          source: "css/*,js/*,fonts/*,images/*,essays/*.html,index.html,essays.html,gallery.html,about.html,favicon.svg"
+          source: "css/*,js/*,fonts/*,images/**/*,essays/**/*.html,index.html,essays.html,gallery.html,about.html,favicon.svg"
           target: /var/www/nilset
           strip_components: 0
           overwrite: true

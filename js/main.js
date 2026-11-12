@@ -320,13 +320,17 @@
   lightbox.innerHTML = `
     <button class="close-btn" aria-label="关闭">✕</button>
     <img src="" alt="">
+    <div class="lightbox-caption"></div>
   `;
   document.body.appendChild(lightbox);
   const lbImg = lightbox.querySelector('img');
   const closeBtn = lightbox.querySelector('.close-btn');
+  const lbCaption = lightbox.querySelector('.lightbox-caption');
 
-  function openLightbox(src) {
+  function openLightbox(src, title = '', collection = '') {
     lbImg.src = src;
+    lbCaption.textContent = [collection, title].filter(Boolean).join(' · ');
+    lbCaption.style.display = title || collection ? 'block' : 'none';
     lightbox.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -342,7 +346,7 @@
       const img = item?.querySelector('img') || el;
       if (fullSrc) {
         e.stopPropagation();
-        openLightbox(fullSrc);
+        openLightbox(fullSrc, item?.getAttribute('data-title'), item?.getAttribute('data-collection'));
       } else if (img && img.src) {
         e.stopPropagation();
         openLightbox(img.src);

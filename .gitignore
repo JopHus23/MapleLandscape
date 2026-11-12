@@ -19,3 +19,6 @@ fonts/*.ttf
 .DS_Store
 Thumbs.db
 essays/*.md
+essays/**/*.md
+!essays/README.md
+!essays/**/_collection.md
