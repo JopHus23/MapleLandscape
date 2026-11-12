@@ -42,12 +42,6 @@
         <button type="button" data-view="timeline">全部时间</button>
       </div>
 
-      <p class="section-label">最近更新</p>
-      <div class="gallery-grid" style="margin-bottom:64px;">
-        <!-- GALLERY_RECENT -->
-        <div class="item reveal" data-full="images/26.11.09.png" data-title="11-09" data-collection="未分组"><img src="images/thumbs/26.11.09.webp" alt="11-09" loading="lazy" style="width:100%;display:block;"><span class="item-tag">未分组</span><div class="corners"><div class="corner"></div><div class="corner"></div><div class="corner"></div><div class="corner"></div></div></div>      <!-- /GALLERY_RECENT -->
-      </div>
-
       <div id="gallery-collections">
         <p class="section-label">影像集</p>
         <div class="collection-grid">
@@ -62,6 +56,12 @@
           <!-- GALLERY_TIMELINE -->
         <div class="item reveal" data-full="images/26.11.09.png" data-title="11-09" data-collection="未分组"><img src="images/thumbs/26.11.09.webp" alt="11-09" loading="lazy" style="width:100%;display:block;"><span class="item-tag">未分组</span><div class="corners"><div class="corner"></div><div class="corner"></div><div class="corner"></div><div class="corner"></div></div></div>      <!-- /GALLERY_TIMELINE -->
         </div>
+      </div>
+
+      <p class="section-label">最近更新</p>
+      <div class="gallery-grid" style="margin-top:64px;">
+        <!-- GALLERY_RECENT -->
+        <div class="item reveal" data-full="images/26.11.09.png" data-title="11-09" data-collection="未分组"><img src="images/thumbs/26.11.09.webp" alt="11-09" loading="lazy" style="width:100%;display:block;"><span class="item-tag">未分组</span><div class="corners"><div class="corner"></div><div class="corner"></div><div class="corner"></div><div class="corner"></div></div></div>      <!-- /GALLERY_RECENT -->
       </div>
     </section>
   </main>
@@ -90,6 +90,8 @@
 
   <script src="js/main.js?v=12"></script>
   <script>document.querySelector('.theme-btn').addEventListener('click',function(){this.textContent=document.documentElement.getAttribute('data-theme')==='dark'?'☾':'☀';});document.querySelector('.theme-btn').textContent=document.documentElement.getAttribute('data-theme')==='dark'?'☾':'☀';</script>
+
+
 
 
 
