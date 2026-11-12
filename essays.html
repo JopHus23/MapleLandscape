@@ -31,8 +31,8 @@
       <p class="font-mono" style="font-size:12px; letter-spacing:.1em; margin-bottom:48px; color:var(--fg-muted);">ESSAYS / WRITINGS</p>
 
       <div class="archive-switch">
-        <button type="button" data-view="timeline" class="active">全部时间</button>
-        <button type="button" data-view="collections">按文集</button>
+        <button type="button" data-view="collections" class="active">按文集</button>
+        <button type="button" data-view="timeline">全部时间</button>
       </div>
 
       <p class="section-label">最近更新</p>
@@ -46,21 +46,9 @@
       <!-- /ESSAY_RECENT -->
       </div>
 
-      <div id="essay-timeline">
-        <p class="section-label">全部随笔</p>
-        <!-- ESSAY_TIMELINE -->
-        <a href="essays/%E6%9E%AB%E8%AF%AD%C2%B7%E5%85%A5%E9%81%93%E9%9B%B2/AlcoHole.html" class="essay-item reveal" data-collection="枫语·入道雲"><span class="num">01 ∅</span><div class="content"><span class="item-tag">枫语·入道雲</span><h3>酔</h3><p>向上情绪淡漠</p></div><span class="date">2026-11-09</span></a>
-        <a href="essays/START.html" class="essay-item reveal" data-collection="散篇"><span class="num">02 ∅</span><div class="content"><span class="item-tag">散篇</span><h3>原初空集</h3><p>这是第一篇随笔。</p></div><span class="date">2026-11-09</span></a>
-        <a href="essays/%E6%9E%AB%E8%AF%AD%C2%B7%E5%85%A5%E9%81%93%E9%9B%B2/Nilset.html" class="essay-item reveal" data-collection="枫语·入道雲"><span class="num">03 ∅</span><div class="content"><span class="item-tag">枫语·入道雲</span><h3>空集</h3><p>我们点燃光的子孙</p></div><span class="date">2025-01-28</span></a>
-        <a href="essays/%E6%9E%AB%E8%AF%AD%C2%B7%E8%8C%9C%E7%A9%BA/Past-t.html" class="essay-item reveal" data-collection="枫语·茜空"><span class="num">04 ∅</span><div class="content"><span class="item-tag">枫语·茜空</span><h3>蝶恋花·归何处</h3><p>云落沉山山艳艳，</p></div><span class="date">2024-12-20</span></a>
-        <a href="essays/%E6%9E%AB%E8%AF%AD%C2%B7%E6%9D%B1%E9%9B%B2/O-IV.html" class="essay-item reveal" data-collection="枫语·東雲"><span class="num">05 ∅</span><div class="content"><span class="item-tag">枫语·東雲</span><h3>之外·其四</h3><p>给时间时间</p></div><span class="date">2023-09-10</span></a>
-      <!-- /ESSAY_TIMELINE -->
-      </div>
-
-      <div id="essay-collections" hidden>
+      <div id="essay-collections">
         <p class="section-label">文集</p>
-        <div class="collection-grid">
-          <!-- ESSAY_COLLECTIONS -->
+        <!-- ESSAY_COLLECTIONS -->
         <a class="collection-card reveal" href="essays/%E6%9E%AB%E8%AF%AD%C2%B7%E5%85%A5%E9%81%93%E9%9B%B2/index.html" style="">
           <span class="collection-face"></span>
           <span class="collection-body">
@@ -89,7 +77,17 @@
           </span>
         </a>
       <!-- /ESSAY_COLLECTIONS -->
-        </div>
+      </div>
+
+      <div id="essay-timeline" hidden>
+        <p class="section-label">全部随笔</p>
+        <!-- ESSAY_TIMELINE -->
+        <a href="essays/%E6%9E%AB%E8%AF%AD%C2%B7%E5%85%A5%E9%81%93%E9%9B%B2/AlcoHole.html" class="essay-item reveal" data-collection="枫语·入道雲"><span class="num">01 ∅</span><div class="content"><span class="item-tag">枫语·入道雲</span><h3>酔</h3><p>向上情绪淡漠</p></div><span class="date">2026-11-09</span></a>
+        <a href="essays/START.html" class="essay-item reveal" data-collection="散篇"><span class="num">02 ∅</span><div class="content"><span class="item-tag">散篇</span><h3>原初空集</h3><p>这是第一篇随笔。</p></div><span class="date">2026-11-09</span></a>
+        <a href="essays/%E6%9E%AB%E8%AF%AD%C2%B7%E5%85%A5%E9%81%93%E9%9B%B2/Nilset.html" class="essay-item reveal" data-collection="枫语·入道雲"><span class="num">03 ∅</span><div class="content"><span class="item-tag">枫语·入道雲</span><h3>空集</h3><p>我们点燃光的子孙</p></div><span class="date">2025-01-28</span></a>
+        <a href="essays/%E6%9E%AB%E8%AF%AD%C2%B7%E8%8C%9C%E7%A9%BA/Past-t.html" class="essay-item reveal" data-collection="枫语·茜空"><span class="num">04 ∅</span><div class="content"><span class="item-tag">枫语·茜空</span><h3>蝶恋花·归何处</h3><p>云落沉山山艳艳，</p></div><span class="date">2024-12-20</span></a>
+        <a href="essays/%E6%9E%AB%E8%AF%AD%C2%B7%E6%9D%B1%E9%9B%B2/O-IV.html" class="essay-item reveal" data-collection="枫语·東雲"><span class="num">05 ∅</span><div class="content"><span class="item-tag">枫语·東雲</span><h3>之外·其四</h3><p>给时间时间</p></div><span class="date">2023-09-10</span></a>
+      <!-- /ESSAY_TIMELINE -->
       </div>
     </section>
   </main>
@@ -129,19 +127,27 @@
 
 
 
+
+
+
+
+
 <script data-archive-view-script="essay-timeline">
   const buttons=[...document.querySelectorAll('[data-view]')];
   const timeline=document.getElementById('essay-timeline');
   const collections=document.getElementById('essay-collections');
   const collectionCount=collections.querySelectorAll('a').length;
-  if (!collectionCount) document.querySelector('.archive-switch')?.remove();
-  buttons.forEach(button=>button.addEventListener('click',()=>{
-    buttons.forEach(item=>item.classList.toggle('active',item===button));
-    timeline.hidden=button.dataset.view!=='timeline';
-    collections.hidden=button.dataset.view!=='collections';
-    localStorage.setItem('essay-timeline-view',button.dataset.view);
-  }));
-  if(localStorage.getItem('essay-timeline-view')==='collections'&&collectionCount) document.querySelector('[data-view="collections"]')?.click();
+  if (!collectionCount) {
+    document.querySelector('.archive-switch')?.remove();
+    timeline.hidden=false;
+    collections.hidden=true;
+  } else {
+    buttons.forEach(button=>button.addEventListener('click',()=>{
+      buttons.forEach(item=>item.classList.toggle('active',item===button));
+      timeline.hidden=button.dataset.view!=='timeline';
+      collections.hidden=button.dataset.view!=='collections';
+    }));
+  }
 </script>
 </body>
 </html>

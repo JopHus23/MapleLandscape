@@ -38,8 +38,8 @@
       <p class="font-mono" style="font-size:12px; letter-spacing:.1em; margin-bottom:48px; color:var(--fg-muted);">GALLERY / VISUALS</p>
 
       <div class="archive-switch">
-        <button type="button" data-view="timeline" class="active">全部时间</button>
-        <button type="button" data-view="collections">按影像集</button>
+        <button type="button" data-view="collections" class="active">按影像集</button>
+        <button type="button" data-view="timeline">全部时间</button>
       </div>
 
       <p class="section-label">最近更新</p>
@@ -48,19 +48,19 @@
         <div class="item reveal" data-full="images/26.11.09.png" data-title="11-09" data-collection="未分组"><img src="images/thumbs/26.11.09.webp" alt="11-09" loading="lazy" style="width:100%;display:block;"><span class="item-tag">未分组</span><div class="corners"><div class="corner"></div><div class="corner"></div><div class="corner"></div><div class="corner"></div></div></div>      <!-- /GALLERY_RECENT -->
       </div>
 
-      <div id="gallery-timeline">
-        <p class="section-label">全部影像</p>
-        <div class="gallery-grid">
-          <!-- GALLERY_TIMELINE -->
-        <div class="item reveal" data-full="images/26.11.09.png" data-title="11-09" data-collection="未分组"><img src="images/thumbs/26.11.09.webp" alt="11-09" loading="lazy" style="width:100%;display:block;"><span class="item-tag">未分组</span><div class="corners"><div class="corner"></div><div class="corner"></div><div class="corner"></div><div class="corner"></div></div></div>      <!-- /GALLERY_TIMELINE -->
-        </div>
-      </div>
-
-      <div id="gallery-collections" hidden>
+      <div id="gallery-collections">
         <p class="section-label">影像集</p>
         <div class="collection-grid">
           <!-- GALLERY_COLLECTIONS -->
       <!-- /GALLERY_COLLECTIONS -->
+        </div>
+      </div>
+
+      <div id="gallery-timeline" hidden>
+        <p class="section-label">全部影像</p>
+        <div class="gallery-grid">
+          <!-- GALLERY_TIMELINE -->
+        <div class="item reveal" data-full="images/26.11.09.png" data-title="11-09" data-collection="未分组"><img src="images/thumbs/26.11.09.webp" alt="11-09" loading="lazy" style="width:100%;display:block;"><span class="item-tag">未分组</span><div class="corners"><div class="corner"></div><div class="corner"></div><div class="corner"></div><div class="corner"></div></div></div>      <!-- /GALLERY_TIMELINE -->
         </div>
       </div>
     </section>
@@ -100,19 +100,25 @@
 
 
 
+
+
+
 <script data-archive-view-script="gallery-timeline">
   const buttons=[...document.querySelectorAll('[data-view]')];
   const timeline=document.getElementById('gallery-timeline');
   const collections=document.getElementById('gallery-collections');
   const collectionCount=collections.querySelectorAll('a').length;
-  if (!collectionCount) document.querySelector('.archive-switch')?.remove();
-  buttons.forEach(button=>button.addEventListener('click',()=>{
-    buttons.forEach(item=>item.classList.toggle('active',item===button));
-    timeline.hidden=button.dataset.view!=='timeline';
-    collections.hidden=button.dataset.view!=='collections';
-    localStorage.setItem('gallery-timeline-view',button.dataset.view);
-  }));
-  if(localStorage.getItem('gallery-timeline-view')==='collections'&&collectionCount) document.querySelector('[data-view="collections"]')?.click();
+  if (!collectionCount) {
+    document.querySelector('.archive-switch')?.remove();
+    timeline.hidden=false;
+    collections.hidden=true;
+  } else {
+    buttons.forEach(button=>button.addEventListener('click',()=>{
+      buttons.forEach(item=>item.classList.toggle('active',item===button));
+      timeline.hidden=button.dataset.view!=='timeline';
+      collections.hidden=button.dataset.view!=='collections';
+    }));
+  }
 </script>
 </body>
 </html>
