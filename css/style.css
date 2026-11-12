@@ -236,6 +236,9 @@ main { position:relative; z-index:1; padding-top:64px; }
 .collection-desc { margin-top:12px; color:var(--fg-secondary); }
 .collection-intro { max-width:720px; margin:0 0 40px; color:var(--fg-secondary); line-height:2; }
 .essay-list { border-top:1px solid var(--border); }
+.collection-page {
+  max-width:960px; margin:0 auto; padding:64px 24px; box-sizing:border-box;
+}
 
 .essay-item {
   display:flex; align-items:baseline; gap:24px;

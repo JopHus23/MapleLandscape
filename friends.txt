@@ -3,6 +3,7 @@
 #
 # 格式：
 # 链接 | 显示名 | 一句话介绍 | 图标路径
+# 链接可以带 https://，也可以只写域名；只写域名时自动使用 https。
 #
 # 后三项都可以省略。
 # 显示名省略时使用域名。
@@ -11,6 +12,7 @@
 #
 # 示例：
 # https://www.idadwind.com | idadwind | 朋友的博客
+# koch2333.cn | koch2333
 
 idadwind.com | idadwind
 koch2333.cn | koch2333
