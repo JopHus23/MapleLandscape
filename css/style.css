@@ -265,6 +265,22 @@ main { position:relative; z-index:1; padding-top:64px; }
 .article {
   max-width:680px; margin:0 auto; padding:64px 24px; box-sizing:border-box;
 }
+.article h1 {
+  margin:0 0 8px; font-size:28px; font-weight:700; line-height:1.4; color:var(--fg);
+}
+.article .meta {
+  margin:0 0 48px; font-size:12px; color:var(--fg-muted);
+}
+.article p {
+  margin:0 0 1.9em; font-size:16px; line-height:2; color:var(--fg-secondary);
+}
+.article h2 { margin:2.2em 0 .8em; font-size:22px; line-height:1.4; color:var(--fg); }
+.article h3 { margin:1.8em 0 .6em; font-size:18px; line-height:1.4; color:var(--fg); }
+.article img { max-width:100%; margin:24px auto; border-radius:8px; }
+.article blockquote {
+  margin:24px 0; padding-left:16px;
+  border-left:3px solid var(--accent); color:var(--fg-secondary);
+}
 
 /* Gallery */
 .gallery-grid { columns:2; column-gap:16px; }
