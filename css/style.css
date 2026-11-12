@@ -197,6 +197,7 @@ main { position:relative; z-index:1; padding-top:64px; }
   font-size:10px; letter-spacing:.08em; color:var(--accent);
   transition:background .5s ease, border-color .5s ease, color .5s ease;
 }
+.card > .item-tag { margin-bottom:12px; }
 .essay-item .item-tag { margin-bottom:8px; }
 .gallery-grid .item .item-tag {
   position:absolute; left:12px; top:12px; z-index:2;
@@ -260,6 +261,9 @@ main { position:relative; z-index:1; padding-top:64px; }
 .section-label {
   display:block; margin-bottom:16px;
   font-family:var(--font-mono); font-size:12px; letter-spacing:.12em; color:var(--fg-muted);
+}
+.article {
+  max-width:680px; margin:0 auto; padding:64px 24px; box-sizing:border-box;
 }
 
 /* Gallery */
