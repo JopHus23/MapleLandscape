@@ -214,6 +214,8 @@ main { position:relative; z-index:1; padding-top:64px; }
   color:var(--fg-secondary); font-size:12px; cursor:pointer; transition:all .3s;
 }
 .archive-switch button.active { background:var(--accent); color:#fff; }
+#essay-collections, #essay-timeline,
+#gallery-collections, #gallery-timeline { margin-bottom:64px; }
 .collection-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:20px; }
 .collection-card {
   position:relative; overflow:hidden; display:block; min-height:180px;
@@ -230,6 +232,16 @@ main { position:relative; z-index:1; padding-top:64px; }
 .collection-body strong { display:block; margin-top:10px; font-size:19px; color:var(--fg); }
 .collection-body small { display:block; margin-top:8px; color:var(--fg-secondary); line-height:1.5; }
 .collection-body > span:last-child { margin-top:16px; font-size:12px; color:var(--accent); }
+#essay-collections .collection-card,
+#essay-collections .collection-body { min-height:150px; }
+#essay-collections .collection-body { padding:18px; }
+#essay-collections .collection-body strong { margin-top:0; }
+#essay-collections .collection-count {
+  margin-top:8px; font-family:var(--font-mono); font-size:12px;
+  color:var(--fg-secondary);
+}
+#essay-collections .collection-body small { margin-top:6px; }
+#essay-collections .collection-body > span:last-child { margin-top:14px; }
 .breadcrumb { display:flex; gap:8px; align-items:center; margin-bottom:24px; font-size:12px; color:var(--fg-muted); }
 .breadcrumb a { color:var(--fg-muted); text-decoration:none; transition:color .2s; }
 .breadcrumb a:hover { color:var(--accent); }
